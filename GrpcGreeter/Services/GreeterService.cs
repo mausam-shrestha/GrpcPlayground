@@ -18,5 +18,13 @@ namespace GrpcGreeter.Services
                 Message = "Hello " + request.Name
             });
         }
+
+        public override Task<RawStringReply> ChangeToLowercase(RawStringRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new RawStringReply
+            {
+                RawString = request.RawString.ToLower()
+            });
+        }
     }
 }
